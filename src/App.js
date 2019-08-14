@@ -3,6 +3,10 @@ import Dashboard from './dashboard/Dashboard';
 import logo from './logo.svg';
 import './App.css';
 
+// THEME
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import muiTheme from './theme/muiTheme';
+
 function App() {
   return (
     <div className="App">
@@ -21,7 +25,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Dashboard></Dashboard>
+      <MuiThemeProvider theme={muiTheme}>
+        <Dashboard />
+      </MuiThemeProvider>
     </div>
   );
 }
