@@ -1,5 +1,28 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 前端需求分析
+* 科服宣传
+    - [] 风采展示
+* 人员管理
+    - [] 科服人员的查看
+    - [] 通过文件上传新学期人员名单
+    - [] 每学期人员的增删改查
+* 针对校内人员
+    - [] 预约修理电脑
+    - [] 预约外勤
+    - [] FAQ
+* 工时
+    - [] 通过文件上传工时
+    - [] 每个队员工时审核
+* 外勤
+    - [] 队员申报外勤
+    - [] 管理员审核外勤
+* 用户反馈
+    - [] 问卷统计
+* 物资管理
+    - [] 物资清单
+
+
 ## Available Scripts
 
 In the project directory, you can run:
