@@ -3,6 +3,7 @@ import Dashboard from './dashboard/Dashboard';
 import Onepirate from './onepirate/Home';
 import SignIn from './onepirate/SignIn';
 import SignUp from './onepirate/SignUp';
+import ForgotPassword from './onepirate/ForgotPassword';
 // import logo from './logo.svg';
 import './App.css';
 import { createBrowserHistory } from "history";
@@ -22,8 +23,9 @@ function App() {
           <Switch>
             <Route path="/admin" component={Dashboard} />
             <Route path="/home" component={Onepirate} />
-            <Route path="/signIn" component={SignIn} />
+            <Route path="/signIn" render={(props) => <SignIn {...props} history={hist} />} />
             <Route path="/signUp" component={SignUp} />
+            <Route path="forgotPassword" component={ForgotPassword} />
             <Redirect from="/" to="/home/" />
           </Switch>
         </Router>
