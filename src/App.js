@@ -1,32 +1,32 @@
 import React from 'react';
 import Dashboard from './dashboard/Dashboard';
-import logo from './logo.svg';
+import Onepirate from './onepirate/Home';
+import SignIn from './onepirate/SignIn';
+import SignUp from './onepirate/SignUp';
+// import logo from './logo.svg';
 import './App.css';
+import { createBrowserHistory } from "history";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 // THEME
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import muiTheme from './theme/muiTheme';
 
+const hist = createBrowserHistory();
+
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
       <MuiThemeProvider theme={muiTheme}>
-        <Dashboard />
+        <Router history={hist}>
+          <Switch>
+            <Route path="/admin" component={Dashboard} />
+            <Route path="/home" component={Onepirate} />
+            <Route path="/signIn" component={SignIn} />
+            <Route path="/signUp" component={SignUp} />
+            <Redirect from="/" to="/home/" />
+          </Switch>
+        </Router>
       </MuiThemeProvider>
     </div>
   );
