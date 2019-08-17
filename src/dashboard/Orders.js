@@ -23,7 +23,7 @@ export default function Orders() {
   const [people, setPeople] = React.useState(null);
   
   React.useEffect(() => {
-    fetch('http://183.172.146.6:8008/people')
+    fetch("http://" + process.env.REACT_APP_SERVER_IP + ":8008/people")
       .then(res => res.json())
       .then(data => { setPeople(data); });
   }, []);
