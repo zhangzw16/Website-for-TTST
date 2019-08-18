@@ -44,18 +44,25 @@ const useStyles = makeStyles(theme => ({
 
 function SignIn(props) {
   const classes = useStyles();
-  const [values, setValues] = useState({});
+  const [email, setEmail] = useState('');
+  const [pwd, setPwd] = useState('');
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    console.log(values);
+    console.log('usr: ' + email);
+    console.log('pwd: ' + pwd);
+    
+    props.setAuthenticated(true);
     props.history.push('./admin');
   };
 
-  const handleChange = (event) => {
-    event.persist();
-    setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+  const _handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
+
+  const _handlePwdChange = (event) => {
+    setPwd(event.target.value);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -78,6 +85,8 @@ function SignIn(props) {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={_handleEmailChange}
           />
           <TextField
             variant="outlined"
@@ -89,6 +98,8 @@ function SignIn(props) {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={pwd}
+            onChange={_handlePwdChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

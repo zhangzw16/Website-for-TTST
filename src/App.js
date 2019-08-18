@@ -4,10 +4,12 @@ import Onepirate from './onepirate/Home';
 import SignIn from './onepirate/SignIn';
 import SignUp from './onepirate/SignUp';
 import ForgotPassword from './onepirate/ForgotPassword';
+import PrivateRoute from './components/PrivateRoute';
 // import logo from './logo.svg';
 import './App.css';
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { useState } from 'react';
 
 // THEME
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
@@ -16,14 +18,16 @@ import muiTheme from './theme/muiTheme';
 const hist = createBrowserHistory();
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
   return (
     <div className="App">
       <MuiThemeProvider theme={muiTheme}>
         <Router history={hist}>
           <Switch>
-            <Route path="/admin" component={Dashboard} />
+            <PrivateRoute authenticated={authenticated} path="/admin" component={Dashboard} />
             <Route path="/home" component={Onepirate} />
-            <Route path="/signIn" render={(props) => <SignIn {...props} history={hist} />} />
+            <Route path="/signIn" render={(props) => <SignIn {...props} history={hist} setAuthenticated={setAuthenticated} />} />
             <Route path="/signUp" component={SignUp} />
             <Route path="forgotPassword" component={ForgotPassword} />
             <Redirect from="/" to="/home/" />
