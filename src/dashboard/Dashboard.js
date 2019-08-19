@@ -21,6 +21,8 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Peoples from './Peoples';
 import Copyright from '../components/Copyright';
+import { Router, Route, Switch} from "react-router-dom";
+import { mainListRoutes } from './routes/drawerRoutes';
 
 const drawerWidth = 240;
 
@@ -157,28 +159,16 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Peoples />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
+        {mainListRoutes.map((route, index) => (
+          // Render more <Route>s with the same paths as
+          // above, but different components this time.
+          <Route
+            key={index}
+            path={route.path}
+            component={route.component}
+          />
+        ))}
+        
         <Copyright />
       </main>
     </div>
