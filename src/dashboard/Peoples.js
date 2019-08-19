@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Orders() {
+export default function Peoples() {
   const classes = useStyles();
   const [people, setPeople] = React.useState(null);
   

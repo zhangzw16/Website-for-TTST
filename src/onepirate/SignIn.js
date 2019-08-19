@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
-import { Copyright } from '../dashboard/Dashboard';
+import Copyright from '../components/Copyright';
 import MySnackbarContentWrapper from '../components/MySnackbarContentWrapper'
 import axios from 'axios';
 
