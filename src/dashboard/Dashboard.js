@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -131,7 +131,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            科服后台管理
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -160,15 +160,13 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         {mainListRoutes.map((route, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
           <Route
             key={index}
             path={route.path}
             component={route.component}
           />
         ))}
-        
+  
         <Copyright />
       </main>
     </div>
