@@ -9,7 +9,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import axios from 'axios';
 
 
 const useStyles = makeStyles(theme => ({
@@ -23,7 +22,7 @@ export default function Orders() {
   const [people, setPeople] = React.useState(null);
   
   React.useEffect(() => {
-    fetch("http://" + process.env.REACT_APP_SERVER_IP + ":8008/api/people")
+    fetch(process.env.REACT_APP_SERVER_IP + "api/people")
       .then(res => res.json())
       .then(data => { setPeople(data); });
   }, []);

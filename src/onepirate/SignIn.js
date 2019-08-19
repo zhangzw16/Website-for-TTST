@@ -15,7 +15,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Snackbar from '@material-ui/core/Snackbar';
 import { Copyright } from '../dashboard/Dashboard';
+import MySnackbarContentWrapper from '../components/MySnackbarContentWrapper'
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -42,18 +45,27 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
 function SignIn(props) {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
+  const [open, setOpen] = React.useState(false);
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    console.log('usr: ' + email);
-    console.log('pwd: ' + pwd);
-    
-    props.setAuthenticated(true);
-    props.history.push('./admin');
+    const user = { username: email, password: pwd };
+    console.log(user);
+    axios.post(process.env.REACT_APP_SERVER_IP + 'api/authenticate', user).then((res) => {
+      console.log(res.data)
+      if (res.data.message === "Successful Authentication") {
+        props.setAuthenticated(true);
+        props.history.push('./admin');
+      }
+    }).catch((error) => {
+      setOpen(true);
+      console.error(error);
+    });
   };
 
   const _handleEmailChange = (event) => {
@@ -62,6 +74,13 @@ function SignIn(props) {
 
   const _handlePwdChange = (event) => {
     setPwd(event.target.value);
+  }
+
+  function handleSnackbarClose(event, reason) {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
   }
 
   return (
@@ -74,6 +93,21 @@ function SignIn(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <MySnackbarContentWrapper
+          onClose={handleSnackbarClose}
+          variant="error"
+          message="Invalid username or password!"
+        />
+      </Snackbar>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
