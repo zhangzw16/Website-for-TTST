@@ -49,15 +49,15 @@ const useStyles = makeStyles(theme => ({
 function SignIn(props) {
   const classes = useStyles();
   const [email, setEmail] = useState('');
-  const [pwd, setPwd] = useState('');
+  const [password, setpassword] = useState('');
   const [open, setOpen] = React.useState(false);
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    const user = { username: email, password: pwd };
+    const user = { username: email, password: password };
     console.log(user);
     axios.post(process.env.REACT_APP_SERVER_IP + 'api/authenticate', user).then((res) => {
-      console.log(res.data)
+      console.log(res.data);
       if (res.data.message === "Successful Authentication") {
         props.setAuthenticated(true);
         props.history.push('./admin');
@@ -72,8 +72,8 @@ function SignIn(props) {
     setEmail(event.target.value);
   };
 
-  const _handlePwdChange = (event) => {
-    setPwd(event.target.value);
+  const _handlepasswordChange = (event) => {
+    setpassword(event.target.value);
   }
 
   function handleSnackbarClose(event, reason) {
@@ -132,8 +132,8 @@ function SignIn(props) {
             type="password"
             id="password"
             autoComplete="current-password"
-            value={pwd}
-            onChange={_handlePwdChange}
+            value={password}
+            onChange={_handlepasswordChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

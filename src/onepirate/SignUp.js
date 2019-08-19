@@ -1,6 +1,7 @@
 import withRoot from './modules/withRoot';
 // --- Post bootstrap -----
 import React from 'react';
+import { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Copyright } from '../dashboard/Dashboard';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -41,8 +43,47 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SignUp() {
+function SignUp(props) {
   const classes = useStyles();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setpassword] = useState('');
+
+  const handleSubmit = (event) => {
+    if (event) event.preventDefault();
+    const newUser = {
+      firstName: firstName,
+      lastName: lastName,
+      username: email,
+      password: password
+    };
+    axios.post(process.env.REACT_APP_SERVER_IP + 'api/userAuth', newUser).then((res) => {
+      console.log(res.data);
+      if (res.data.msg === "注册成功") {
+        props.setAuthenticated(true);
+        props.history.push('./admin');
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  };
+
+  const _handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+  }
+
+  const _handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+  }
+
+  const _handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const _handlepasswordChange = (e) => {
+    setpassword(e.target.value);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -54,7 +95,7 @@ function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -65,6 +106,8 @@ function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
+                value={firstName}
+                onChange={_handleFirstNameChange}
                 autoFocus
               />
             </Grid>
@@ -77,6 +120,8 @@ function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={lastName}
+                onChange={_handleLastNameChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -88,6 +133,8 @@ function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={_handleEmailChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -100,6 +147,8 @@ function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={_handlepasswordChange}
               />
             </Grid>
             <Grid item xs={12}>

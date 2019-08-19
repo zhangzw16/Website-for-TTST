@@ -28,7 +28,7 @@ function App() {
             <PrivateRoute authenticated={authenticated} path="/admin" component={Dashboard} />
             <Route path="/home" component={Onepirate} />
             <Route path="/signIn" render={(props) => <SignIn {...props} history={hist} setAuthenticated={setAuthenticated} />} />
-            <Route path="/signUp" component={SignUp} />
+            <Route path="/signUp" render={(props) => <SignUp {...props} history={hist} setAuthenticated={setAuthenticated} />}  />
             <Route path="forgotPassword" component={ForgotPassword} />
             <Redirect from="/" to="/home/" />
           </Switch>
