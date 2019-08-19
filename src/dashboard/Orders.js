@@ -43,7 +43,7 @@ export default function Orders() {
         </TableHead>
         <TableBody>
           {(people || []).map(row => (
-            <TableRow>
+            <TableRow key={row._id}>
               <TableCell>{row.学号}</TableCell>
               <TableCell>{row.姓名}</TableCell>
               <TableCell>{row.院系}</TableCell>
@@ -55,7 +55,7 @@ export default function Orders() {
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link color="primary" href="javascript:;">
+        <Link color="primary">
           See more orders
         </Link>
       </div>

@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <MuiThemeProvider theme={muiTheme}>
+      {/* <MuiThemeProvider theme={muiTheme}> */}
         <Router history={hist}>
           <Switch>
             <PrivateRoute authenticated={authenticated} path="/admin" component={Dashboard} />
@@ -33,7 +33,7 @@ function App() {
             <Redirect from="/" to="/home/" />
           </Switch>
         </Router>
-      </MuiThemeProvider>
+      {/* </MuiThemeProvider> */}
     </div>
   );
 }
