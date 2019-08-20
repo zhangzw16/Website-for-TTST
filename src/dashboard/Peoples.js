@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 export default function Peoples() {
   const classes = useStyles();
   const [people, setPeople] = React.useState([]);
-  
+
   React.useEffect(() => {
     fetch(process.env.REACT_APP_SERVER_IP + "api/people")
       .then(res => res.json())
@@ -43,15 +43,11 @@ export default function Peoples() {
           onRowAdd: newData =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                {
-                  const data = people;
-                  data.push(newData);
-                  axios.post(process.env.REACT_APP_SERVER_IP + 'api/people', newData).then((res) => {
-                    setPeople(data);
-                  }).catch((error) => {
-                    console.error(error);
-                  })
-                }
+                axios.post(process.env.REACT_APP_SERVER_IP + 'api/people', newData).then((res) => {
+                  setPeople(prevPeople => prevPeople.concat(newData));
+                }).catch((error) => {
+                  console.error(error);
+                })
                 resolve()
               }, 1000)
             }),
@@ -70,12 +66,9 @@ export default function Peoples() {
           onRowDelete: oldData =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                {
-                  let data = this.state.data;
-                  const index = data.indexOf(oldData);
-                  data.splice(index, 1);
-                  this.setState({ data }, () => resolve());
-                }
+                axios.delete(process.env.REACT_APP_SERVER_IP + `api/people/${oldData.学号}`).then((res) => {
+                  setPeople(prevPeople => prevPeople.filter(item => ![oldData].includes(item)));
+                })
                 resolve()
               }, 1000)
             }),
