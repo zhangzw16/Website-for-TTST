@@ -13,6 +13,32 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const batchLookUp = {
+  201901: '19春季学期',
+  201902: '19暑期第1批次',
+  201903: '19暑期第2批次',
+  201904: '19暑期第3批次',
+  201905: '19秋季学期'
+};
+
+const batchColumn = (rowData) =>{
+  if (rowData.批次) {
+    for (const key of Object.keys(rowData.批次).sort().reverse()) {
+      if (rowData.批次[key]) {
+        return batchLookUp[key];
+      } 
+    }
+  }
+};
+
+const batchFilter = (term, rowData) => {
+  // console.log(term);
+  if (rowData.批次) {
+    return rowData.批次[term];
+  }
+  return false;
+};
+
 export default function Peoples() {
   const classes = useStyles();
   const [people, setPeople] = React.useState([]);
@@ -30,6 +56,7 @@ export default function Peoples() {
         icons={tableIcons}
         title="科服暑期批次人员名单"
         columns={[
+          { title: '批次', field: '批次', lookup: batchLookUp, render: batchColumn, customFilterAndSearch: batchFilter},
           { title: '学号', field: '学号' },
           { title: '姓名', field: '姓名' },
           { title: "性别", field: "性别", lookup: { 男: '男', 女: '女' }  },
@@ -81,6 +108,7 @@ export default function Peoples() {
         options={{
           actionsColumnIndex: -1,
           pageSize: 10,
+          filtering: true
         }}
         // for refresh
         actions={[
@@ -95,6 +123,8 @@ export default function Peoples() {
             },
           }
         ]}
+        // for toolbar filter
+
       />
     </React.Fragment>
   );
