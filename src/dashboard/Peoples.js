@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
 import tableIcons from '../components/tableIcons';
 import axios from 'axios';
-// import { Save, Delete } from '@material-ui/icons';
+import { Update } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
   seeMore: {
@@ -32,7 +32,7 @@ export default function Peoples() {
         columns={[
           { title: '学号', field: '学号' },
           { title: '姓名', field: '姓名' },
-          { title: "性别", field: "性别" },
+          { title: "性别", field: "性别", lookup: { 男: '男', 女: '女' }  },
           { title: '院系', field: '院系' },
           { title: '联系电话', field: '联系电话' },
           { title: '电子邮件', field: '电子邮件' },
@@ -80,8 +80,21 @@ export default function Peoples() {
         }}
         options={{
           actionsColumnIndex: -1,
-          pageSize: 10
+          pageSize: 10,
         }}
+        // for refresh
+        actions={[
+          {
+            icon: () => <Update></Update>,
+            tooltip: 'Refresh Data',
+            isFreeAction: true,
+            onClick: () => {
+              axios.get(process.env.REACT_APP_SERVER_IP + "api/people")
+              .then(res => { setPeople(res.data); })
+              .catch(err => console.error);
+            },
+          }
+        ]}
       />
     </React.Fragment>
   );
