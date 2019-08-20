@@ -44,7 +44,9 @@ export default function Peoples() {
             new Promise((resolve, reject) => {
               setTimeout(() => {
                 axios.post(process.env.REACT_APP_SERVER_IP + 'api/people', newData).then((res) => {
-                  setPeople(prevPeople => prevPeople.concat(newData));
+                  setPeople(prevPeople => 
+                    prevPeople.concat(newData)
+                  );
                 }).catch((error) => {
                   console.error(error);
                 })
@@ -54,12 +56,13 @@ export default function Peoples() {
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                {
-                  const data = this.state.data;
-                  const index = data.indexOf(oldData);
-                  data[index] = newData;
-                  this.setState({ data }, () => resolve());
-                }
+                axios.put(process.env.REACT_APP_SERVER_IP + `api/people/${oldData.学号}`, newData).then((res) => {
+                  setPeople(prevPeople => 
+                    prevPeople.map((item) => { return item === oldData ? newData : item; })
+                  )
+                }).catch((error) => {
+                  console.log(error);
+                })
                 resolve()
               }, 1000)
             }),
@@ -67,7 +70,9 @@ export default function Peoples() {
             new Promise((resolve, reject) => {
               setTimeout(() => {
                 axios.delete(process.env.REACT_APP_SERVER_IP + `api/people/${oldData.学号}`).then((res) => {
-                  setPeople(prevPeople => prevPeople.filter(item => ![oldData].includes(item)));
+                  setPeople(prevPeople => 
+                    prevPeople.filter(item => ![oldData].includes(item))
+                  );
                 })
                 resolve()
               }, 1000)
