@@ -1,11 +1,13 @@
-// this.is for vscode path intelli
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "*": ["src/*"],
       "test/*": ["test/*"],
       "underscore": ["lodash"]
     }
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
