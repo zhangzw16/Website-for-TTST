@@ -1,10 +1,10 @@
 import React from 'react';
-import Dashboard from './dashboard/Dashboard';
-import Onepirate from './onepirate/Home';
-import SignIn from './onepirate/SignIn';
-import SignUp from './onepirate/SignUp';
-import ForgotPassword from './onepirate/ForgotPassword';
-import PrivateRoute from './components/PrivateRoute';
+import Dashboard from 'dashboard/Dashboard';
+import Onepirate from 'onepirate/Home';
+import SignIn from 'onepirate/SignIn';
+import SignUp from 'onepirate/SignUp';
+import ForgotPassword from 'onepirate/ForgotPassword';
+import PrivateRoute from 'components/PrivateRoute';
 // import logo from './logo.svg';
 import './App.css';
 import { createBrowserHistory } from "history";
@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 // THEME
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import muiTheme from './theme/muiTheme';
+import muiTheme from 'theme/muiTheme';
 
 const hist = createBrowserHistory();
 

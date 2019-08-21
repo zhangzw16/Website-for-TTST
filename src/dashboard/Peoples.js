@@ -3,9 +3,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
-import tableIcons from '../components/tableIcons';
-import axios from 'axios';
 import { Update } from '@material-ui/icons';
+import axios from 'axios';
+import tableIcons from 'components/tableIcons';
 
 const useStyles = makeStyles(theme => ({
   seeMore: {
@@ -39,6 +39,12 @@ const batchFilter = (term, rowData) => {
   return false;
 };
 
+const changeBatchData = (newData) => {
+  newData.批次 = {
+    [newData.批次]: true
+  };
+};
+
 export default function Peoples() {
   const classes = useStyles();
   const [people, setPeople] = React.useState([]);
@@ -70,6 +76,7 @@ export default function Peoples() {
           onRowAdd: newData =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
+                changeBatchData(newData);
                 axios.post(process.env.REACT_APP_SERVER_IP + 'api/people', newData).then((res) => {
                   setPeople(prevPeople => 
                     prevPeople.concat(newData)
@@ -83,6 +90,7 @@ export default function Peoples() {
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
+                changeBatchData(newData);
                 axios.put(process.env.REACT_APP_SERVER_IP + `api/people/${oldData.学号}`, newData).then((res) => {
                   setPeople(prevPeople => 
                     prevPeople.map((item) => { return item === oldData ? newData : item; })
@@ -123,8 +131,6 @@ export default function Peoples() {
             },
           }
         ]}
-        // for toolbar filter
-
       />
     </React.Fragment>
   );

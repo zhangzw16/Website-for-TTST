@@ -1,5 +1,6 @@
 import { People, AccessTime, DirectionsRun, Feedback, ShoppingCart } from '@material-ui/icons';
-import Peoples from '../Peoples';
+import Peoples from 'dashboard/Peoples';
+import WorkingHours from 'dashboard/WorkingHours';
 
 export const mainListRoutes = [
   {
@@ -9,9 +10,10 @@ export const mainListRoutes = [
     component: Peoples
   },
   {
-    path: '/admin',
+    path: '/admin/workingHours',
     sidebarName: '工时',
-    icon: AccessTime
+    icon: AccessTime,
+    component: WorkingHours
   },
   {
     path: '/admin',
