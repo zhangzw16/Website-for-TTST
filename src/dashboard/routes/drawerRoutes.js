@@ -16,18 +16,21 @@ export const mainListRoutes = [
     component: WorkingHours
   },
   {
-    path: '/admin',
+    path: '/admin/field',
     sidebarName: '外勤',
-    icon: DirectionsRun
+    icon: DirectionsRun,
+    component: Peoples
   },
   {
-    path: '/admin',
+    path: '/admin/feedback',
     sidebarName: '反馈问卷',
-    icon: Feedback
+    icon: Feedback,
+    component: Peoples
   },
   {
-    path: '/admin',
+    path: '/admin/resource',
     sidebarName: '物资管理',
-    icon: ShoppingCart
+    icon: ShoppingCart,
+    component: Peoples
   }
 ];

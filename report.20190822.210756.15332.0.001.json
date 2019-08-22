@@ -1,0 +1,354 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20190822.210756.15332.0.001.json",
+    "dumpEventTime": "2019-08-22T21:07:56Z",
+    "processId": 15332,
+    "cwd": "C:\\Users\\THUzh\\OneDrive\\THU\\THU_Y3SUMMER\\RasberryPi\\Website-for-TTST",
+    "commandLine": [
+      "C:\\ProgramData\\Anaconda3\\node.exe",
+      "C:\\Users\\THUzh\\OneDrive\\THU\\THU_Y3SUMMER\\RasberryPi\\Website-for-TTST\\node_modules\\react-scripts\\scripts\\start.js"
+    ],
+    "nodejsVersion": "v11.14.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "11.14.0",
+      "v8": "7.0.276.38-node.18",
+      "uv": "1.27.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "67",
+      "nghttp2": "1.37.0",
+      "napi": "4",
+      "llhttp": "1.1.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "34.0",
+      "icu": "63.1",
+      "tz": "2018e",
+      "unicode": "11.0"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v11.14.0/node-v11.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v11.14.0/node-v11.14.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v11.14.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18362",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "host": "DESKTOP-AP9JA0K"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff75d16d24e",
+      "symbol": "std::basic_ios<char,std::char_traits<char> >::fill+16366"
+    },
+    {
+      "pc": "0x00007ff75d16c0f9",
+      "symbol": "std::basic_ios<char,std::char_traits<char> >::fill+11929"
+    },
+    {
+      "pc": "0x00007ff75d16b923",
+      "symbol": "std::basic_ios<char,std::char_traits<char> >::fill+9923"
+    },
+    {
+      "pc": "0x00007ff75d25c1d2",
+      "symbol": "uv_loop_fork+89362"
+    },
+    {
+      "pc": "0x00007ff75d68454e",
+      "symbol": "v8::internal::FatalProcessOutOfMemory+798"
+    },
+    {
+      "pc": "0x00007ff75d684487",
+      "symbol": "v8::internal::FatalProcessOutOfMemory+599"
+    },
+    {
+      "pc": "0x00007ff75d737f64",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+14068"
+    },
+    {
+      "pc": "0x00007ff75d72dd72",
+      "symbol": "v8::internal::Heap::CollectGarbage+7234"
+    },
+    {
+      "pc": "0x00007ff75d72c588",
+      "symbol": "v8::internal::Heap::CollectGarbage+1112"
+    },
+    {
+      "pc": "0x00007ff75d735eb7",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+5703"
+    },
+    {
+      "pc": "0x00007ff75d735f36",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+5830"
+    },
+    {
+      "pc": "0x00007ff75d86de01",
+      "symbol": "v8::internal::Factory::NewFillerObject+49"
+    },
+    {
+      "pc": "0x00007ff75d927cd6",
+      "symbol": "v8::internal::StoreBuffer::StoreBufferOverflow+27190"
+    },
+    {
+      "pc": "0x000000ba202d0481",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 1500557312,
+    "totalCommittedMemory": 1500557312,
+    "usedMemory": 1450090416,
+    "availableMemory": 31036552,
+    "memoryLimit": 1526909922,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 524288,
+        "capacity": 515584,
+        "used": 33520,
+        "available": 482064
+      },
+      "new_space": {
+        "memorySize": 6291456,
+        "committedMemory": 6291456,
+        "capacity": 3093504,
+        "used": 634984,
+        "available": 2458520
+      },
+      "old_space": {
+        "memorySize": 1305677824,
+        "committedMemory": 1305677824,
+        "capacity": 1268734424,
+        "used": 1265869304,
+        "available": 2865120
+      },
+      "code_space": {
+        "memorySize": 5767168,
+        "committedMemory": 5767168,
+        "capacity": 4794688,
+        "used": 4794688,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 7876608,
+        "committedMemory": 7876608,
+        "capacity": 5980320,
+        "used": 5980320,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 174419968,
+        "committedMemory": 174419968,
+        "capacity": 198008448,
+        "used": 172777600,
+        "available": 25230848
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 229.218,
+    "kernelCpuSeconds": 28.468,
+    "cpuConsumptionPercent": 8.42386,
+    "maxRss": 1394077696,
+    "pageFaults": {
+      "IORequired": 1108456,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 19900,
+      "writes": 20
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\Users\\THUzh\\OneDrive\\THU\\THU_Y3SUMMER\\RasberryPi\\Website-for-TTST",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\THUzh\\AppData\\Roaming",
+    "BABEL_ENV": "development",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132104933213919778",
+    "CLASSPATH": "C:\\java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64\\bin;C:\\java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64\\lib\\dt.jar;C:\\java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64\\lib\\tools.jar",
+    "COLORTERM": "truecolor",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-AP9JA0K",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "CUDA_PATH": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v9.0",
+    "CUDA_PATH_V9_0": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v9.0",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\THUzh",
+    "INIT_CWD": "C:\\Users\\THUzh\\OneDrive\\THU\\THU_Y3SUMMER\\RasberryPi\\Website-for-TTST",
+    "IntelliJ IDEA": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2018.3.5\\bin;",
+    "INTEL_DEV_REDIST": "C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\",
+    "JAVA_HOME": "C:\\java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64",
+    "LANG": "zh_CN.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\THUzh\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-AP9JA0K",
+    "MIC_LD_LIBRARY_PATH": "C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\compiler\\lib\\mic",
+    "MSMPI_BENCHMARKS": "C:\\Program Files\\Microsoft MPI\\Benchmarks\\",
+    "MSMPI_BIN": "C:\\Program Files\\Microsoft MPI\\Bin\\",
+    "NODE": "C:\\ProgramData\\Anaconda3\\node.exe",
+    "NODE_ENV": "development",
+    "NODE_PATH": "",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
+    "npm_config_bin_links": "true",
+    "npm_config_disturl": "https://npm.taobao.org/dist",
+    "npm_config_ignore_optional": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_license": "MIT",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_registry": "https://registry.npm.taobao.org",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_user_agent": "yarn/1.17.3 npm/? node/v11.14.0 win32 x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_version_git_sign": "",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_tag_prefix": "v",
+    "npm_execpath": "C:\\Program Files (x86)\\Yarn\\bin\\yarn.js",
+    "npm_lifecycle_event": "start",
+    "npm_lifecycle_script": "react-scripts start",
+    "npm_node_execpath": "C:\\ProgramData\\Anaconda3\\node.exe",
+    "npm_package_browserslist_development_0": "last 1 chrome version",
+    "npm_package_browserslist_development_1": "last 1 firefox version",
+    "npm_package_browserslist_development_2": "last 1 safari version",
+    "npm_package_browserslist_production_0": ">0.2%",
+    "npm_package_browserslist_production_1": "not dead",
+    "npm_package_browserslist_production_2": "not op_mini all",
+    "npm_package_dependencies_axios": "^0.19.0",
+    "npm_package_dependencies_babel_plugin_module_resolver": "^3.2.0",
+    "npm_package_dependencies_final_form": "^4.18.5",
+    "npm_package_dependencies_history": "^4.9.0",
+    "npm_package_dependencies_material_table": "^1.50.0",
+    "npm_package_dependencies_react": "^16.9.0",
+    "npm_package_dependencies_react_dom": "^16.9.0",
+    "npm_package_dependencies_react_final_form": "^6.3.0",
+    "npm_package_dependencies_react_router_dom": "^5.0.1",
+    "npm_package_dependencies_react_scripts": "3.1.0",
+    "npm_package_dependencies_recharts": "^1.7.1",
+    "npm_package_dependencies_validator": "^11.1.0",
+    "npm_package_dependencies__material_ui_core": "^4.3.2",
+    "npm_package_dependencies__material_ui_icons": "^4.2.1",
+    "npm_package_description": "* 科服宣传 - [ ] 风采展示 * 人员管理 - [ ] 科服人员的查看 - [ ] 通过文件上传新学期人员名单 - [ ] 每学期人员的增删改查 * 针对校内人员 - [ ] 预约修理电脑 - [ ] 预约外勤 - [ ] FAQ * 工时 - [ ] 通过文件上传工时 - [ ] 每个队员工时审核 * 外勤 - [ ] 队员申报外勤 - [ ] 管理员审核外勤 * 用户反馈 - [ ] 问卷统计 * 物资管理 - [ ] 物资清单",
+    "npm_package_eslintConfig_extends": "react-app",
+    "npm_package_name": "react-dashboard",
+    "npm_package_private": "true",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_scripts_build": "react-scripts build",
+    "npm_package_scripts_eject": "react-scripts eject",
+    "npm_package_scripts_start": "react-scripts start",
+    "npm_package_scripts_test": "react-scripts test",
+    "npm_package_version": "1.17.3",
+    "NUMBER_OF_PROCESSORS": "4",
+    "NVCUDASAMPLES9_0_ROOT": "C:\\ProgramData\\NVIDIA Corporation\\CUDA Samples\\v9.0",
+    "NVCUDASAMPLES_ROOT": "C:\\ProgramData\\NVIDIA Corporation\\CUDA Samples\\v9.0",
+    "NVTOOLSEXT_PATH": "C:\\Program Files\\NVIDIA Corporation\\NvToolsExt\\",
+    "OneDrive": "C:\\Users\\THUzh\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\THUzh\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\THUzh\\AppData\\Local\\Temp\\yarn--1566476216797-0.05796291868883907;C:\\Users\\THUzh\\OneDrive\\THU\\THU_Y3SUMMER\\RasberryPi\\Website-for-TTST\\node_modules\\.bin;C:\\Users\\THUzh\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\ProgramData\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\ProgramData\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\ProgramData\\Anaconda3\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\Microsoft MPI\\Bin\\;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v9.0\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v9.0\\libnvvp;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;C:\\Program Files\\CMake\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Users\\THUzh\\cuda;C:\\Softwares\\ffmpeg-20180912-0caa33c-win64-static\\bin;C:\\Program Files\\MATLAB\\R2018b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2018b\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Ruby25-x64\\bin;C:\\ProgramData\\Anaconda3;C:\\ProgramData\\Anaconda3\\Scripts;C:\\Users\\THUzh\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\Bandizip\\;C:\\Users\\THUzh\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\THUzh\\AppData\\Local\\Julia-1.0.0\\bin;C:\\Users\\THUzh\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Softwares\\apache-maven-3.6.0\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2018.3.5\\bin;;C:\\java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64\\bin;C:\\java-1.8.0-openjdk-1.8.0.191-1.b12.redhat.windows.x86_64\\jre\\bin;C:\\Softwares\\nuget;C:\\Users\\THUzh\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\THUzh\\AppData\\Local\\Programs\\Microsoft VS Code Insiders\\bin;C:\\Users\\THUzh\\AppData\\Local\\Yarn\\bin",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.RB;.RBW;.CPL",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 78 Stepping 3, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "4e03",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Users\\THUzh\\OneDrive\\文档\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "REACT_APP_SERVER_IP": "http://183.172.162.194:8008/",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\THUzh\\AppData\\Local\\Temp",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.37.1",
+    "TMP": "C:\\Users\\THUzh\\AppData\\Local\\Temp",
+    "USERDOMAIN": "DESKTOP-AP9JA0K",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-AP9JA0K",
+    "USERNAME": "THUzh",
+    "USERPROFILE": "C:\\Users\\THUzh",
+    "VS140COMNTOOLS": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\Tools\\",
+    "windir": "C:\\WINDOWS",
+    "YARN_WRAP_OUTPUT": "false"
+  },
+  "sharedObjects": [
+    "C:\\ProgramData\\Anaconda3\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\WINDOWS\\System32\\fwpuclnt.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll"
+  ]
+}

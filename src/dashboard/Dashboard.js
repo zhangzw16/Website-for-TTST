@@ -83,23 +83,21 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  fixedHeight: {
-    height: 240,
-  },
+  }
 }));
 
-export default function Dashboard() {
+// function routeRender(route, props) {
+//   const ComponentName = route.component;
+//   return <ComponentName {...props}/>;
+// }
+
+export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
+    console.log(props.studentID);
   };
   const handleDrawerClose = () => {
     setOpen(false);
@@ -152,7 +150,9 @@ export default function Dashboard() {
           <Route
             key={index}
             path={route.path}
-            component={route.component}
+            render={() => (
+              <route.component studentID={props.studentID}/>
+            )}
           />
         ))}
         <Copyright />

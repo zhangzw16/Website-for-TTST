@@ -55,12 +55,13 @@ function SignIn(props) {
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
     const user = { username: email, password: password };
-    console.log(user);
+    console.log(process.env.REACT_APP_SERVER_IP);
     axios.post(process.env.REACT_APP_SERVER_IP + 'api/authenticate', user).then((res) => {
       console.log(res.data);
       if (res.data.message === "Successful Authentication") {
         props.setAuthenticated(true);
-        props.history.push('./admin');
+        props.setGlobalStudentID(res.data.studentID);
+        props.history.push('./admin/');
       }
     }).catch((error) => {
       setOpen(true);

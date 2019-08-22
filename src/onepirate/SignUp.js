@@ -47,6 +47,7 @@ function SignUp(props) {
   const classes = useStyles();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [studentID, setStudentID] = useState('');
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
 
@@ -55,6 +56,7 @@ function SignUp(props) {
     const newUser = {
       firstName: firstName,
       lastName: lastName,
+      studentID: studentID,
       username: email,
       password: password
     };
@@ -62,6 +64,7 @@ function SignUp(props) {
       console.log(res.data);
       if (res.data.msg === "注册成功") {
         props.setAuthenticated(true);
+        props.setGlobalStudentID(studentID);
         props.history.push('./admin');
       }
     }).catch((error) => {
@@ -75,6 +78,10 @@ function SignUp(props) {
 
   const _handleLastNameChange = (e) => {
     setLastName(e.target.value);
+  }
+
+  const _handleStudentIDChange = (e) => {
+    setStudentID(e.target.value);
   }
 
   const _handleEmailChange = (e) => {
@@ -135,6 +142,19 @@ function SignUp(props) {
                 autoComplete="email"
                 value={email}
                 onChange={_handleEmailChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="studentID"
+                label="Tsinghua StudentID"
+                name="studentID"
+                autoComplete="studentID"
+                value={studentID}
+                onChange={_handleStudentIDChange}
               />
             </Grid>
             <Grid item xs={12}>

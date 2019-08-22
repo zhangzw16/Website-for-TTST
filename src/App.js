@@ -19,16 +19,17 @@ const hist = createBrowserHistory();
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [studentID, setStudentID] = useState(0);
 
   return (
     <div className="App">
       {/* <MuiThemeProvider theme={muiTheme}> */}
         <Router history={hist}>
           <Switch>
-            <PrivateRoute authenticated={authenticated} path="/admin" component={Dashboard} />
+            <PrivateRoute path="/admin" component={Dashboard} authenticated={authenticated} studentID={studentID} />
             <Route path="/home" component={Onepirate} />
-            <Route path="/signIn" render={(props) => <SignIn {...props} history={hist} setAuthenticated={setAuthenticated} />} />
-            <Route path="/signUp" render={(props) => <SignUp {...props} history={hist} setAuthenticated={setAuthenticated} />}  />
+            <Route path="/signIn" render={(props) => <SignIn {...props} history={hist} setAuthenticated={setAuthenticated} setGlobalStudentID={setStudentID} />} />
+            <Route path="/signUp" render={(props) => <SignUp {...props} history={hist} setAuthenticated={setAuthenticated} setGlobalStudentID={setStudentID} />} />
             <Route path="forgotPassword" component={ForgotPassword} />
             <Redirect from="/" to="/home/" />
           </Switch>

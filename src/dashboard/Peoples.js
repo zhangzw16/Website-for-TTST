@@ -45,11 +45,12 @@ const changeBatchData = (newData) => {
   };
 };
 
-export default function Peoples() {
+export default function Peoples(props) {
   const classes = useStyles();
   const [people, setPeople] = React.useState([]);
 
   React.useEffect(() => {
+    console.log(props.studentID);
     fetch(process.env.REACT_APP_SERVER_IP + "api/people")
       .then(res => res.json())
       .then(data => { setPeople(data); });
