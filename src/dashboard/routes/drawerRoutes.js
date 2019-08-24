@@ -1,6 +1,6 @@
 import { People, AccessTime, DirectionsRun, Feedback, ShoppingCart } from '@material-ui/icons';
-import Peoples from 'dashboard/Peoples';
-import WorkingHours from 'dashboard/WorkingHours';
+import Peoples from 'dashboard/components/Peoples';
+import WorkingHours from 'dashboard/components/WorkingHours';
 
 export const mainListRoutes = [
   {

@@ -8,7 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Deposits from 'dashboard/Deposits';
+import Deposits from 'dashboard/components/Deposits';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
 

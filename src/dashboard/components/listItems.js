@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import { Link } from 'react-router-dom';
-import { mainListRoutes } from './routes/drawerRoutes';
+import { mainListRoutes } from 'dashboard/routes/drawerRoutes';
 
 export const mainListItems = (
   <div>
