@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 import Tooltip from '@material-ui/core/Tooltip';
 import Container from '@material-ui/core/Container';
@@ -11,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Deposits from 'dashboard/components/Deposits';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
+import AddHoursDialog from 'dashboard/components/AddHoursDialog';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -144,11 +144,7 @@ export default function WorkingHours(props) {
           </Grid>
           <Grid item xs={8} md={6} lg={3}>
             <Paper className={fixedHeightRowPaper}>
-              <Tooltip title="申报工时" aria-label="申报工时">
-                <Fab color="primary" aria-label="申报" className={classes.fab}>
-                  <AddIcon />
-                </Fab>
-              </Tooltip>
+              <AddHoursDialog />
               <Tooltip title="确认工时" aria-label="确认工时">
                 <Fab color="secondary" aria-label="确认" className={classes.fab}>
                   <SaveIcon />
