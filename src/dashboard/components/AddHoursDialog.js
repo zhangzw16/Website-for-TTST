@@ -8,10 +8,12 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-
 import MuiFab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Tooltip from '@material-ui/core/Tooltip';
+// table
+import MaterialTable from 'material-table';
+import tableIcons from 'components/tableIcons';
 
 const styles = theme => ({
   root: {
@@ -59,12 +61,18 @@ const Fab = withStyles(theme => ({
   }
 }))(MuiFab);
 
-export default function AddHoursDialog() {
+export default function AddHoursDialog(props) {
   const [open, setOpen] = React.useState(false);
+  const [workingRecord, setWorkingRecord] = React.useState([]);
+
+  React.useEffect(() => {
+    setWorkingRecord(props.workingRecord);
+  }, [props.workingRecord]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -78,10 +86,45 @@ export default function AddHoursDialog() {
       </Tooltip>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title
+          申报工时和积分
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
+          <MaterialTable
+            icons={tableIcons}
+            columns={[
+              { title: '日期', field: 'day' },
+              { title: '工时', field: 'workingHours', type: 'numeric' },
+              { title: '积分', field: 'scores', type: 'numeric' }
+            ]}
+            data={workingRecord}
+            title="本周工时和积分详情"
+            editable={{
+              onRowAdd: newData =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    setWorkingRecord(prev => 
+                      prev.concat(newData)
+                    );
+                    resolve()
+                  }, 500)
+                }),
+              onRowUpdate: (newData, oldData) =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    setWorkingRecord(prev => 
+                      prev.map((item) => { return item === oldData ? newData : item; }))
+                    resolve()
+                  }, 500)
+                }),
+            }}
+            options={{
+              actionsColumnIndex: -1,
+              search: false,
+              paging: false
+            }}
+          />
+           {/* TODO 在下面添加操作说明 */}
+          {/* <Typography gutterBottom>
             Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
             in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
           </Typography>
@@ -93,11 +136,11 @@ export default function AddHoursDialog() {
             Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
             scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
             auctor fringilla.
-          </Typography>
+          </Typography> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Save changes
+            确认并提交
           </Button>
         </DialogActions>
       </Dialog>

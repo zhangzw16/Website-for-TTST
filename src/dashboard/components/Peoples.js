@@ -2,12 +2,17 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import MaterialTable from 'material-table';
 import { Update } from '@material-ui/icons';
 import axios from 'axios';
 import tableIcons from 'components/tableIcons';
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
   seeMore: {
     marginTop: theme.spacing(3),
   },
@@ -50,7 +55,6 @@ export default function Peoples(props) {
   const [people, setPeople] = React.useState([]);
 
   React.useEffect(() => {
-    console.log(props.studentID);
     fetch(process.env.REACT_APP_SERVER_IP + "api/people")
       .then(res => res.json())
       .then(data => { setPeople(data); });
@@ -58,6 +62,7 @@ export default function Peoples(props) {
 
   return (
     <React.Fragment>
+      <Container maxWidth="lg" className={classes.container}>
       {/* <Title>科服人员</Title> */}
       <MaterialTable
         icons={tableIcons}
@@ -116,7 +121,7 @@ export default function Peoples(props) {
         }}
         options={{
           actionsColumnIndex: -1,
-          pageSize: 10,
+          pageSize: 5,
           filtering: true
         }}
         // for refresh
@@ -133,6 +138,7 @@ export default function Peoples(props) {
           }
         ]}
       />
+      </Container>
     </React.Fragment>
   );
 }

@@ -102,6 +102,17 @@ function getRecordArray(type, workingRecord) {
         res.push(workingRecord.scores[day] ? workingRecord.scores[day] : 0);
       }
     }
+  } else if (type === 'show') {
+    for (let day of days) {
+      let resDay = {day: day};
+      if (workingRecord.workingHours) {
+        resDay['workingHours'] = workingRecord.workingHours[day] ? workingRecord.workingHours[day] : 0;
+      }
+      if (workingRecord.scores) {
+        resDay['scores'] = workingRecord.scores[day] ? workingRecord.scores[day] : 0;
+      }
+      res.push(resDay);
+    }
   }
   return res;
 }
@@ -119,7 +130,7 @@ export default function WorkingHours(props) {
     }).catch(err => {
       console.error(err);
     })
-  }, []);
+  }, [props.studentID]);
 
   return (
     <React.Fragment>
@@ -144,7 +155,7 @@ export default function WorkingHours(props) {
           </Grid>
           <Grid item xs={8} md={6} lg={3}>
             <Paper className={fixedHeightRowPaper}>
-              <AddHoursDialog />
+              <AddHoursDialog workingRecord={getRecordArray('show', workingRecord)} />
               <Tooltip title="确认工时" aria-label="确认工时">
                 <Fab color="secondary" aria-label="确认" className={classes.fab}>
                   <SaveIcon />
@@ -177,23 +188,6 @@ export default function WorkingHours(props) {
               />
             </Paper>
           </Grid>
-          {/* <Grid item xs={12} md={6} lg={6}>
-            <Paper>
-              <Plot useResizeHandler={true} style={{width: '100%'}}
-                data={[
-                  {
-                    x: [1, 2, 3],
-                    y: [2, 6, 3],
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    marker: { color: 'red' },
-                  },
-                  { type: 'bar', x: [1, 2, 3], y: [2, 5, 3] },
-                ]}
-                layout={{ autosize: true, title: '本周积分图表' }}
-              />
-            </Paper>
-          </Grid> */}
         </Grid>
       </Container>
     </React.Fragment>
