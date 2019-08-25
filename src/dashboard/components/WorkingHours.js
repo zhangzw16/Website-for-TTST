@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Deposits from 'dashboard/components/Deposits';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
-import AddHoursDialog from 'dashboard/components/AddHoursDialog';
+import EditHoursDialog from 'dashboard/components/EditHoursDialog';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -42,7 +42,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const days = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'];
-const daysToShow = ['周一', '周二', '周三', '周四', '周五', '周六', '周日', ]
+const daysToShow = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+export const daysLookup = {
+  Day1: '周一',
+  Day2: '周二',
+  Day3: '周三',
+  Day4: '周四',
+  Day5: '周五',
+  Day6: '周六',
+  Day7: '周日'
+};
 
 function getMonday() {
   const d = new Date();
@@ -88,7 +97,7 @@ function calHours(type, workingRecord) {
   return result;
 }
 
-function getRecordArray(type, workingRecord) {
+export function getRecordArray(type, workingRecord) {
   let res = [];
   if (type === 'hours') {
     if (workingRecord.workingHours) {
@@ -155,7 +164,7 @@ export default function WorkingHours(props) {
           </Grid>
           <Grid item xs={8} md={6} lg={3}>
             <Paper className={fixedHeightRowPaper}>
-              <AddHoursDialog workingRecord={getRecordArray('show', workingRecord)} />
+              <EditHoursDialog workingRecord={workingRecord} />
               <Tooltip title="确认工时" aria-label="确认工时">
                 <Fab color="secondary" aria-label="确认" className={classes.fab}>
                   <SaveIcon />

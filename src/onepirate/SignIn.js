@@ -73,7 +73,7 @@ function SignIn(props) {
     setEmail(event.target.value);
   };
 
-  const _handlepasswordChange = (event) => {
+  const _handlePasswordChange = (event) => {
     setpassword(event.target.value);
   }
 
@@ -134,7 +134,7 @@ function SignIn(props) {
             id="password"
             autoComplete="current-password"
             value={password}
-            onChange={_handlepasswordChange}
+            onChange={_handlePasswordChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

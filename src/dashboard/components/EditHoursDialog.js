@@ -11,9 +11,15 @@ import Typography from '@material-ui/core/Typography';
 import MuiFab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Tooltip from '@material-ui/core/Tooltip';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 // table
 import MaterialTable from 'material-table';
 import tableIcons from 'components/tableIcons';
+// axios
+import axios from 'axios';
+// show
+import { getRecordArray, daysLookup } from 'dashboard/components/WorkingHours';
 
 const styles = theme => ({
   root: {
@@ -61,21 +67,49 @@ const Fab = withStyles(theme => ({
   }
 }))(MuiFab);
 
-export default function AddHoursDialog(props) {
+function convertNumber(newData) {
+  newData.workingHours = Number(newData.workingHours);
+  newData.scores = Number(newData.scores);
+}
+
+export default function EditHoursDialog(props) {
   const [open, setOpen] = React.useState(false);
-  const [workingRecord, setWorkingRecord] = React.useState([]);
+  const [workingRecordDays, setWorkingRecordDays] = React.useState([]);
+  const [comment, setComment] = React.useState('');
+  const workingRecord = props.workingRecord;
 
   React.useEffect(() => {
-    setWorkingRecord(props.workingRecord);
+    setWorkingRecordDays(getRecordArray('show', props.workingRecord));
   }, [props.workingRecord]);
 
   const handleClickOpen = () => {
+    // console.log(getRecordArray('show', workingRecordDays))
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const commit = () => {
+    for (let recordDay of workingRecordDays) {
+      workingRecord.workingHours[recordDay.day] = recordDay.workingHours;
+      workingRecord.scores[recordDay.day] = recordDay.scores;
+    }
+    delete workingRecord._id;
+    workingRecord.confirm = false;
+    workingRecord.comment = comment;
+    console.log(workingRecord);
+    axios.post(process.env.REACT_APP_SERVER_IP + 'api/working', workingRecord).then((res) => {
+      setOpen(false);
+    }).catch((error) => {
+      console.log(error);
+    })
+
+  }
+  const _handleCommentChange = (event) => {
+    setComment(event.target.value);
+  }
 
   return (
     <div>
@@ -90,19 +124,23 @@ export default function AddHoursDialog(props) {
         </DialogTitle>
         <DialogContent dividers>
           <MaterialTable
+            components={{
+              Container: props => <Paper {...props} elevation={0} />
+            }}
             icons={tableIcons}
             columns={[
-              { title: '日期', field: 'day' },
+              { title: '日期', field: 'day', lookup: daysLookup },
               { title: '工时', field: 'workingHours', type: 'numeric' },
               { title: '积分', field: 'scores', type: 'numeric' }
             ]}
-            data={workingRecord}
+            data={workingRecordDays}
             title="本周工时和积分详情"
             editable={{
               onRowAdd: newData =>
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
-                    setWorkingRecord(prev => 
+                    convertNumber(newData);
+                    setWorkingRecordDays(prev =>
                       prev.concat(newData)
                     );
                     resolve()
@@ -111,7 +149,9 @@ export default function AddHoursDialog(props) {
               onRowUpdate: (newData, oldData) =>
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
-                    setWorkingRecord(prev => 
+                    convertNumber(newData);
+                    console.log(newData);
+                    setWorkingRecordDays(prev =>
                       prev.map((item) => { return item === oldData ? newData : item; }))
                     resolve()
                   }, 500)
@@ -123,23 +163,24 @@ export default function AddHoursDialog(props) {
               paging: false
             }}
           />
-           {/* TODO 在下面添加操作说明 */}
-          {/* <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
-          <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.
-          </Typography>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
-          </Typography> */}
+          <TextField
+            id="outlined-full-width"
+            label="备注"
+            style={{ margin: 8}}
+            placeholder="备注"
+            helperText="注意请先保存您的更改！请在这里填写您的其他信息"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            value={comment}
+            onChange={_handleCommentChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={commit} color="primary">
             确认并提交
           </Button>
         </DialogActions>
